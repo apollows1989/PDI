@@ -12,7 +12,9 @@
 </p>
 
 '''
-def regions_color(img, pi, pf): # Começamos colotando as dimensões da imagems ( largura e altura) e armazenando nas variáveis x e y.
+def regions_color(img, pi, pf):
+
+    # Começamos colotando as dimensões da imagems ( largura e altura) e armazenando nas variáveis x e y.
 
     y = img.shape[0]
     x = img.shape[1]
