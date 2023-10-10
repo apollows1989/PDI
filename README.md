@@ -12,25 +12,31 @@
 </p>
 
 '''
-def regions_color(img, pi, pf):
+def regions_color(img, pi, pf): # Começamos colotando as dimensões da imagems ( largura e altura) e armazenando nas variáveis x e y.
 
     y = img.shape[0]
     x = img.shape[1]
 
+    # Depois disso eu defini, a partir dos pontos pi e pf, o intervalo onde será aplicado o efeito através das variáveis ai, af, pi, pf.
     ai = pi[0]
     af = pf[0]
     bi = pi[1]
     bf = pf[1]
 
-    if(ai<0 or af>x or bi<0 or bf>y) :
-        print('Intervalo invalido')
+    # Caso o intervalo seja informado errado, a função irá retorna nulo.
+    if ai < 0 or af > x or bi < 0 or bf > y:
+        print("Intervalo invalido")
         return
 
-
+    # Com o intervalo definido, criei um laço para percorrer a imagem e para cada pixels (img[j][i]) apliquei o efeito.
+    # Como a imagem é colorida, o efeito teve que ser aplicado para cada camada de cor da matriz img[][].
     for i in range(ai, af):
         for j in range(bi, bf):
-            b, g, r = img[j,i]
-            img[j,i] = ((255 - img[j,i][0]), (255 - img[j,i][1]), (255 - img[j,i][2]))
+            img[j, i] = (
+                (255 - img[j, i][0]),
+                (255 - img[j, i][1]),
+                (255 - img[j, i][2]),
+            )
 
     return img
 
