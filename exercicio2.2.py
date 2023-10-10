@@ -26,4 +26,5 @@ x = img.shape[1]
 # Aplicando a função regions.py em uma região retangular no meio da imagem
 imagem_processada = app.regions_color(img, (x // 4, y // 4), (3 * x // 4, 3 * y // 4))
 
+# Salvando a imagem processada na pasta "README_FILES/Imagens_processadas"
 cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo.jpg", imagem_processada)
