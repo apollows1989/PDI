@@ -45,3 +45,5 @@ def regions_color(img, pi, pf):
 
     return img
 ```
+<p align = "Justify">&nbsp &nbsp &nbsp O resultado do processamento obtido esta representado na figura 02 </p>
+<p align = "CENTER">Figura 02 </br> <img src="/README_FILES/Imagens_processadas/Diogo.jpg"></p>
