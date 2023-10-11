@@ -84,7 +84,7 @@ def regions_color(img, pi, pf):
 
 </br>
 
-<p align = "Justify">Por fim, criei o arquivo exercicio2.2.py para testar a função, onde nele eu carrego uma imagem e aplico a função regions_color(). O resultado do processamento obtido esta representado na figura 02 </p>
+<p align = "Justify">Para testar a função, criei o arquivo exercicio2.2.py para testar a função, onde nele eu carrego uma imagem e aplico a função regions_color(). O resultado do processamento obtido esta representado na figura 02 </p>
 
 ```
 import os
@@ -113,7 +113,7 @@ cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo.jpg", imagem_processada)
 </br>
 </br>
 
-* ## Exercício 2.3 - Programa trocaregiões (trocar as diagonais)
+* ## Exercício 2.3 - Programa trocaregioes (trocar as diagonais)
 <p align = "Justify">&nbsp &nbsp &nbsp<i> Utilizando o programa exemplos/pixels.cpp como referência, implemente um programa trocaregioes. Seu programa deverá trocar os quadrantes em diagonal na imagem. Explore o uso da classe Mat e seus construtores para criar as regiões que serão trocadas. O efeito é ilustrado na Figura 3.</i></p>
 
 <p align = "CENTER">Figura 03 </br> <img src="/README_FILES/Imagens_geral/Exemplo 2.3.png"></p>
@@ -156,6 +156,71 @@ def trocaregioes(image):
 ```
 </br>
 </br>
-<p>Explicação do código:</p>
+<p align = "Justify">Explicação do código:</p>
+</br>
 
+<p>Começamos colotando as dimensões da imagems ( largura e altura) e armazenando nas variáveis x e y.</p> 
 
+```
+    y = img.shape[0]
+    x = img.shape[1]
+```
+</br>
+<p>Fiz uma cópia do arquivo para não alterar a original.</p> 
+
+```
+    img_proc = image.copy()
+```
+</br>
+<p align = "Justify"> Aqui criei quatro matrizes que representa os quadrantes da imagem, basicamente recortar a imagem em 4 partes e os armazenei em quatro variáveis, sendo uma para cada quadrante, onde a variável img1 representa o quadrante superior esquerdo, o img2 representa o quadrante superior direito, o img3 o quadrante inferior esquerdo e por último o img4 que representa o quadrante inferior direito.</p> 
+
+```
+    img1 = image[0 : y // 2, 0 : x // 2]
+    img2 = image[0 : y // 2, x // 2 : x]
+    img3 = image[y // 2 : y, 0 : x // 2]
+    img4 = image[y // 2 : y, x // 2 : x]
+```
+</br>
+<p align = "Justify"> Por fim, fiz quatro laços para percorrer os 4 quadrantes da imagem, trocando o quadrante img1 por img4 e o img2 por img3 e armazenando na variável img_proc. </p> 
+
+```
+for i in range(0, img1.shape[1]):
+        for j in range(0, img1.shape[0]):
+            img_proc[j + y // 2, i + x // 2] = img1[j, i]
+
+    for i in range(0, img2.shape[1]):
+        for j in range(0, img2.shape[0]):
+            img_proc[j + y // 2, i] = img2[j, i]
+
+    for i in range(0, img3.shape[1]):
+        for j in range(0, img3.shape[0]):
+            img_proc[j, i + x // 2] = img3[j, i]
+
+    for i in range(0, img4.shape[1]):
+        for j in range(0, img4.shape[0]):
+            img_proc[j, i] = img4[j, i]
+```
+
+</br>
+<p align = "Justify">Para testar a função, criei um arquivo exercicio2.3.py, onde nele eu carrego uma imagem e aplico a função trocaregioes(). O resultado do processamento obtido esta representado na figura 04 </p>
+
+```
+import os
+import cv2
+from codigos_py import app
+
+pasta_saida = "README_FILES/Imagens_processadas"
+
+if not os.path.exists(pasta_saida):
+    os.makedirs(pasta_saida)
+
+img = app.load_image(f"README_FILES/Imagens_geral/Diogo.jpg", "COLOR")
+
+imagem_processada = app.trocaregioes(img)
+
+cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg", imagem_processada)
+```
+
+</br>
+</br>
+    
