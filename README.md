@@ -11,7 +11,7 @@
 <p align = "Justify">&nbsp &nbsp &nbsp Para a resolução desse problema, eu criei uma função chamada regions_gray() e regions_color(). Essas duas funções tem a mesma finalidade de inverter as cores de uma região da imagem através de dois pontos passados como parâmetro. Para esse exemplo, eu optei por escolher a função regions_color() para fazer o processamento de uma imagem colorida. 
 </p>
 
-'''
+```
 
 def regions_color(img, pi, pf):
 
@@ -42,5 +42,4 @@ def regions_color(img, pi, pf):
             )
 
     return img
-
-'''
+```
