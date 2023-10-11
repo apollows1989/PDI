@@ -15,7 +15,6 @@
 </p>
 
 
-
 ```
 def regions_color(img, pi, pf):
 
@@ -124,4 +123,40 @@ cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo.jpg", imagem_processada)
 </br>
 
 <p align = "Justify">Tendo como base o programa fornecido pelo professor, criei a função trocaregioes, onde a função recebe uma imagem como parametro e retorna a imagem com os quadrantes em diagonal trocado </p>
+
+```
+def trocaregioes(image):
+
+    y = image.shape[0]
+    x = image.shape[1]
+
+    img_proc = image.copy()
+
+    img1 = image[0 : y // 2, 0 : x // 2]
+    img2 = image[0 : y // 2, x // 2 : x]
+    img3 = image[y // 2 : y, 0 : x // 2]
+    img4 = image[y // 2 : y, x // 2 : x]
+
+    for i in range(0, img1.shape[1]):
+        for j in range(0, img1.shape[0]):
+            img_proc[j + y // 2, i + x // 2] = img1[j, i]
+
+    for i in range(0, img2.shape[1]):
+        for j in range(0, img2.shape[0]):
+            img_proc[j + y // 2, i] = img2[j, i]
+
+    for i in range(0, img3.shape[1]):
+        for j in range(0, img3.shape[0]):
+            img_proc[j, i + x // 2] = img3[j, i]
+
+    for i in range(0, img4.shape[1]):
+        for j in range(0, img4.shape[0]):
+            img_proc[j, i] = img4[j, i]
+
+    return img_proc
+```
+</br>
+</br>
+<p>Explicação do código:</p>
+
 
