@@ -50,6 +50,8 @@ def regions_color(img, pi, pf):
     y = img.shape[0]
     x = img.shape[1]
 ```
+
+</br>
 <p>Depois disso eu defini, a partir dos pontos pi e pf, o intervalo onde será aplicado o efeito através das variáveis ai, af, pi, pf.</p>
 
 ```
@@ -59,6 +61,7 @@ def regions_color(img, pi, pf):
     bf = pf[1]
 ```
 
+</br>
 <p>Caso o intervalo seja informado errado, a função irá retorna nulo.</p>
 
 ```
@@ -67,6 +70,7 @@ def regions_color(img, pi, pf):
         return
 ```
 
+</br>
 <p>Com o intervalo definido, criei um laço para percorrer a imagem e para cada pixels apliquei o efeito. Como a imagem é colorida, o efeito teve que ser aplicado para cada camada de cor da matriz img[][].</p>
 
 ```
@@ -80,8 +84,6 @@ def regions_color(img, pi, pf):
 
     return img
 ```
-
-
 </br>
 
 <p align = "Justify">Para testar a função, criei o arquivo exercicio2.2.py para testar a função, onde nele eu carrego uma imagem e aplico a função regions_color(). O resultado do processamento obtido esta representado na figura 02 </p>
@@ -107,6 +109,7 @@ imagem_processada = app.regions_color(img, (x // 4, y // 4), (3 * x // 4, 3 * y 
 
 cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo.jpg", imagem_processada)
 ```
+
 </br>
 <p align = "CENTER">Figura 02 </br> <img src="/README_FILES/Imagens_processadas/Diogo.jpg"></p>
 
@@ -202,7 +205,7 @@ for i in range(0, img1.shape[1]):
 ```
 
 </br>
-<p align = "Justify">Para testar a função, criei um arquivo exercicio2.3.py, onde nele eu carrego uma imagem e aplico a função trocaregioes(). O resultado do processamento obtido esta representado na figura 04 </p>
+<p align = "Justify">Para testar a função, criei um arquivo exercicio2.3.py, onde nele eu carrego uma imagem e aplico a função trocaregioes(). O resultado do processamento obtido esta representado na figura 04. </p>
 
 ```
 import os
@@ -220,6 +223,8 @@ imagem_processada = app.trocaregioes(img)
 
 cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg", imagem_processada)
 ```
+
+<p align = "CENTER">Figura 04 </br> <img src="/README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg"></p>
 
 </br>
 </br>
