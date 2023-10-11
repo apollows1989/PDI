@@ -157,7 +157,8 @@ def regions_color(img, pi, pf):
 
 
 # Corta a imagem em 4 partes iguais e trocam as posi��es na diagonal
-def troca_diagonal(image):
+def trocaregioes(image):
+    # Começamos colotando as dimensões da imagems ( largura e altura) e armazenando nas variáveis x e y.
     y = image.shape[0]
     x = image.shape[1]
 
