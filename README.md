@@ -1,4 +1,6 @@
 # Exercícios de Processamento Digital de Imagens (PDI)
+#### Todas as funções dos exercícios estão dentro do arquivo app.py dentro da pasta codigos_py
+</br>
 
 ## Exercício 2.2 - Programa regions (negativo de uma região)
 
