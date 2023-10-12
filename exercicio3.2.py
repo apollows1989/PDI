@@ -1,11 +1,26 @@
 import os
 import cv2
 from codigos_py import app
+import matplotlib.pyplot as plt
 
-pasta_saida = "README_FILES/Imagens_processadas"
+imagem_processada, arq_l = app.file_storage(256, 4, 127, pasta_saida)
 
-if not os.path.exists(pasta_saida):
-    os.makedirs(pasta_saida)
+img1 = cv2.imread("README_FILES/Imagens_processadas/senoide-256.png")
 
+if img1 is not None:
+    print(f"Arquivo 1 encontrado")
+else:
+    print(f"Arquivo 1 nao encontrado")
 
-app.file_storage(256, 4, 127, pasta_saida)
+l1 = img1[0, :][:, 0]
+l2 = arq_l[0, :]
+
+diferenca = abs(l1 - l2)
+
+profile = diferenca.sum(axis=0)
+
+plt.plot(diferenca)
+plt.xlabel("Coluna")
+plt.ylabel("Diferença")
+plt.title("Perfil da Diferença entre as Imagens")
+plt.show()

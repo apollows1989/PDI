@@ -200,6 +200,8 @@ def file_storage(SIDE, PERIODS, AMPLITUDE, FOLDER):
                 AMPLITUDE * math.sin(2 * math.pi * PERIODS * j / SIDE) + AMPLITUDE + 1
             )
 
+    arq_l = image
+
     fs = cv2.FileStorage(ss_yml, cv2.FILE_STORAGE_WRITE)
     fs.write("mat", image)
     fs.release()
@@ -216,4 +218,4 @@ def file_storage(SIDE, PERIODS, AMPLITUDE, FOLDER):
     cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
     image = image.astype(np.uint8)
 
-    return image
+    return image, arq_l
