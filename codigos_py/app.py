@@ -188,15 +188,17 @@ def trocaregioes(image):
     return img_proc
 
 
-def file_storage(SIDE, PERIODS, AMPLITUDE):
-    ss_img = f"senoide-{SIDE}.png"
-    ss_yml = f"senoide-{SIDE}.yml"
+def file_storage(SIDE, PERIODS, AMPLITUDE, FOLDER):
+    ss_img = f"{FOLDER}/senoide-{SIDE}.png"
+    ss_yml = f"{FOLDER}/senoide-{SIDE}.yml"
 
     image = np.zeros((SIDE, SIDE), dtype=np.float32)
 
     for i in range(SIDE):
         for j in range(SIDE):
-            image[i, j] = AMPLITUDE * math.sin(2 * math.pi * PERIODS * j / SIDE) + AMPLITUDE + 1
+            image[i, j] = (
+                AMPLITUDE * math.sin(2 * math.pi * PERIODS * j / SIDE) + AMPLITUDE + 1
+            )
 
     fs = cv2.FileStorage(ss_yml, cv2.FILE_STORAGE_WRITE)
     fs.write("mat", image)
