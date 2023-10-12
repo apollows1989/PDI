@@ -228,4 +228,43 @@ cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg", imagem_p
 
 </br>
 </br>
-    
+
+* ## Exercício 3.2 - Programa file_storage (criar uma imagem em espécie de onda)
+</br>
+
+<p align = "Justify">&nbsp &nbsp &nbsp<i> Utilizando o programa filestorage.cpp como base, crie um programa que gere uma imagem de dimensões 256x256 pixels contendo uma senóide de 4 períodos com amplitude de 127 desenhada na horizontal, como aquela apresentada na Figura 6 . Grave a imagem no formato PNG e no formato YML. Compare os arquivos gerados, extraindo uma linha de cada imagem gravada e comparando a diferença entre elas. Trace um gráfico da diferença calculada ao longo da linha correspondente extraída nas imagens. O que você observa?</i></p>
+
+</br>
+
+<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício.</p>
+
+```
+def file_storage(SIDE, PERIODS, AMPLITUDE):
+    ss_img = f"senoide-{SIDE}.png"
+    ss_yml = f"senoide-{SIDE}.yml"
+
+    image = np.zeros((SIDE, SIDE), dtype=np.float32)
+
+    for i in range(SIDE):
+        for j in range(SIDE):
+            image[i, j] = AMPLITUDE * math.sin(2 * math.pi * PERIODS * j / SIDE) + AMPLITUDE + 1
+
+    fs = cv2.FileStorage(ss_yml, cv2.FILE_STORAGE_WRITE)
+    fs.write("mat", image)
+    fs.release()
+
+    cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
+    image = image.astype(np.uint8)
+
+    cv2.imwrite(ss_img, image)
+
+    fs = cv2.FileStorage(ss_yml, cv2.FILE_STORAGE_READ)
+    image = fs.getNode("mat").mat()
+    fs.release()
+
+    cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
+    image = image.astype(np.uint8)
+
+    return image
+```
+
