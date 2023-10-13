@@ -3,7 +3,9 @@ import cv2
 from codigos_py import app
 import matplotlib.pyplot as plt
 
-imagem_processada, arq_l = app.file_storage(256, 4, 127, pasta_saida)
+imagem_processada, arq_l = app.file_storage(
+    256, 4, 127, "README_FILES/Imagens_processadas"
+)
 
 img1 = cv2.imread("README_FILES/Imagens_processadas/senoide-256.png")
 
