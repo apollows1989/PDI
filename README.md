@@ -236,7 +236,7 @@ cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg", imagem_p
 
 </br>
 
-<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício.</p>
+<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício. O resultado pode ser visto na figura 5.</p>
 
 ```
 def file_storage(SIDE, PERIODS, AMPLITUDE):
@@ -267,4 +267,6 @@ def file_storage(SIDE, PERIODS, AMPLITUDE):
 
     return image
 ```
+</br>
+<p align = "CENTER">Figura 04 </br> <img src="/README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg"></p>
 
