@@ -236,7 +236,7 @@ cv2.imwrite(f"README_FILES/Imagens_processadas/Diogo_trocaregioes.jpg", imagem_p
 
 </br>
 
-<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício. O resultado pode ser visto na figura 5, que representa a imagem no formato .png, e na figura 6, que representa uma matriz no formato .yml em ponto flutuante.</p>
+<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício. O resultado pode ser visto na figura 5, que representa a imagem no formato .png, e na figura 6, que representa uma parte da matriz no formato .yml em ponto flutuante.</p>
 
 ```
 def file_storage(SIDE, PERIODS, AMPLITUDE):
@@ -270,8 +270,8 @@ def file_storage(SIDE, PERIODS, AMPLITUDE):
 </br>
 <p align = "CENTER">Figura 05 </br> <img src="/README_FILES/Imagens_processadas/senoide-256.png"></p>
 </br>
-<p align = "CENTER">Figura 06 </br> <img src="/README_FILES/Imagens_processadas/senoide-256.png"></p>
+<p align = "CENTER">Figura 06 </br> <img src="/README_FILES/Imagens_processadas/arq_yml.png"></p>
 
+</br>
 
-
-
+<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício. O resultado pode ser visto na figura 5, que representa a imagem no formato .png, e na figura 6, que representa uma parte da matriz no formato .yml em ponto flutuante.</p>
