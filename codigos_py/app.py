@@ -219,3 +219,37 @@ def file_storage(SIDE, PERIODS, AMPLITUDE, FOLDER):
     image = image.astype(np.uint8)
 
     return image, arq_l
+
+
+def esteganografia_msb(img):
+    image_out = np.zeros(img.shape, dtype=np.uint8)
+    mask = 0b00000111
+
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            pixel = img[i, j]
+            new_pixel = (
+                (pixel[0] & mask) << 5,
+                (pixel[1] & mask) << 5,
+                (pixel[2] & mask) << 5,
+            )
+            image_out[i, j] = new_pixel
+
+    return image_out
+
+
+def esteganografia_lsb(img):
+    image_out = np.zeros(img.shape, dtype=np.uint8)
+    mask = 0b11111000
+
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            pixel = img[i, j]
+            new_pixel = (
+                (pixel[0] & mask),
+                (pixel[1] & mask),
+                (pixel[2] & mask),
+            )
+            image_out[i, j] = new_pixel
+
+    return image_out
