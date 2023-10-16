@@ -13,8 +13,8 @@
 <p align = "Justify">&nbsp &nbsp &nbsp Para a resolução desse problema, eu criei uma função chamada regions_gray() e regions_color(). Essas duas funções tem a mesma finalidade de inverter as cores de uma região da imagem através de dois pontos passados como parâmetro. Para esse exemplo, eu optei por escolher a função regions_color() para fazer o processamento de uma imagem colorida. 
 </p>
 
-
 ```
+
 def regions_color(img, pi, pf):
 
     y = img.shape[0]
@@ -39,6 +39,7 @@ def regions_color(img, pi, pf):
 
     return img
 ```
+
 </br>
 </br>
 <p>Explicação do código:</p>
@@ -319,3 +320,65 @@ plt.show()
 
 * ## Exercício 4.3 - Esteganografia (Imagem escondida)
 <p align = "Justify">&nbsp &nbsp &nbsp<i> Usando o programa esteg-encode.cpp como referência para esteganografia, escreva um programa que recupere a imagem codificada de uma imagem resultante de esteganografia. Lembre-se que os bits menos significativos dos pixels da imagem fornecida deverão compor os bits mais significativos dos pixels da imagem recuperada. O programa deve receber como parâmetros de linha de comando o nome da imagem resultante da esteganografia. Teste a sua implementação com a imagem da Figura 14 (desafio-esteganografia.png).</i></p>
+</br>
+</br>
+
+```
+import os
+import cv2
+from codigos_py import app
+
+arq_path = "README_FILES/Imagens_geral"
+pasta_saida = "README_FILES/Imagens_processadas"
+
+if not os.path.exists(pasta_saida):
+    os.makedirs(pasta_saida)
+
+img = app.load_image(f"README_FILES/Imagens_geral/desafio-esteganografia.png", "COLOR")
+
+img_msb = app.esteganografia_msb(img)
+img_lsb = app.esteganografia_lsb(img)
+
+cv2.imwrite(f"{pasta_saida}/esteganografia_msb.png", img_msb)
+cv2.imwrite(f"{pasta_saida}/esteganografia_lsb.png", img_lsb)
+
+```
+
+```
+def esteganografia_msb(img):
+    image_out = np.zeros(img.shape, dtype=np.uint8)
+    mask = 0b00000111
+
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            pixel = img[i, j]
+            new_pixel = (
+                (pixel[0] & mask) << 5,
+                (pixel[1] & mask) << 5,
+                (pixel[2] & mask) << 5,
+            )
+            image_out[i, j] = new_pixel
+
+    return image_out
+
+
+def esteganografia_lsb(img):
+    image_out = np.zeros(img.shape, dtype=np.uint8)
+    mask = 0b11111000
+
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            pixel = img[i, j]
+            new_pixel = (
+                (pixel[0] & mask),
+                (pixel[1] & mask),
+                (pixel[2] & mask),
+            )
+            image_out[i, j] = new_pixel
+
+    return image_out
+
+```
+
+<p align = "CENTER">Figura 08 </br> <img src="/README_FILES/Imagens_processadas/esteganografia_lsb.png"></p>
+<p align = "CENTER">Figura 09 </br> <img src="/README_FILES/Imagens_processadas/esteganografia_msb.png"></p>
