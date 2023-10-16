@@ -274,4 +274,48 @@ def file_storage(SIDE, PERIODS, AMPLITUDE):
 
 </br>
 
-<p align = "Justify">&nbsp &nbsp &nbsp Com a função file_storage fornecida pelo professor, refiz ela em python e executei para gerar a imagem como solicitado no exercício. O resultado pode ser visto na figura 5, que representa a imagem no formato .png, e na figura 6, que representa uma parte da matriz no formato .yml em ponto flutuante.</p>
+<p align = "Justify">&nbsp &nbsp &nbsp Com as duas imagens, criei um programa chamado exercicio3.2.py para fazer a diferenças das duas imagens e mostrar o gráfico. A imagem das diferenças pode ser observado na figura 07.</p>
+</br>
+
+```
+import os
+import cv2
+from codigos_py import app
+import matplotlib.pyplot as plt
+
+imagem_processada, arq_l = app.file_storage(
+    256, 4, 127, "README_FILES/Imagens_processadas"
+)
+
+img1 = cv2.imread("README_FILES/Imagens_processadas/senoide-256.png")
+
+if img1 is not None:
+    print(f"Arquivo 1 encontrado")
+else:
+    print(f"Arquivo 1 nao encontrado")
+
+l1 = img1[0, :][:, 0]
+l2 = arq_l[0, :]
+
+diferenca = abs(l1 - l2)
+
+profile = diferenca.sum(axis=0)
+
+plt.plot(diferenca)
+plt.xlabel("Coluna")
+plt.ylabel("Diferença")
+plt.title("Perfil da Diferença entre as Imagens")
+plt.show()
+```
+</br>
+
+<p align = "CENTER">Figura 07 </br> <img src="/README_FILES/Imagens_processadas/diferenças.png"></p>
+
+</br>
+<p align = "Justify">&nbsp &nbsp &nbsp Pelo gráfico da figura 07, notamos que os valores da senoide representado em 8 bits, nesse caso quando a imagem é salva em '.png', são convertido para inteiros (0-255) o que faz com que valores decimais sejam descartados. Portanto, o gráfico das diferenças mostra a perda da informação quando discretizamos os valores da senoide para uma visualização em 8 bits numa imagem. </p>
+
+</br>
+</br>
+
+* ## Exercício 4.3 - Esteganografia (Imagem escondida)
+<p align = "Justify">&nbsp &nbsp &nbsp<i> Usando o programa esteg-encode.cpp como referência para esteganografia, escreva um programa que recupere a imagem codificada de uma imagem resultante de esteganografia. Lembre-se que os bits menos significativos dos pixels da imagem fornecida deverão compor os bits mais significativos dos pixels da imagem recuperada. O programa deve receber como parâmetros de linha de comando o nome da imagem resultante da esteganografia. Teste a sua implementação com a imagem da Figura 14 (desafio-esteganografia.png).</i></p>
