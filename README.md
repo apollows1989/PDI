@@ -323,26 +323,7 @@ plt.show()
 </br>
 </br>
 
-```
-import os
-import cv2
-from codigos_py import app
-
-arq_path = "README_FILES/Imagens_geral"
-pasta_saida = "README_FILES/Imagens_processadas"
-
-if not os.path.exists(pasta_saida):
-    os.makedirs(pasta_saida)
-
-img = app.load_image(f"README_FILES/Imagens_geral/desafio-esteganografia.png", "COLOR")
-
-img_msb = app.esteganografia_msb(img)
-img_lsb = app.esteganografia_lsb(img)
-
-cv2.imwrite(f"{pasta_saida}/esteganografia_msb.png", img_msb)
-cv2.imwrite(f"{pasta_saida}/esteganografia_lsb.png", img_lsb)
-
-```
+<p align = "Justify">&nbsp &nbsp &nbsp De posse da imagem fornecida pelo professor, criei dois programa para selecionar os bits da imagem. O primeiro programa, chamado 'esteganografia_msb()' coleta os 3 bits menos significativos e cria uma imagem, onde os 3 bits mais significativos serão os bits coletados da imagem de referencia e o restante é zero. O segundo programa, chamado 'esteganografia_lsb()' zera os 3 bits menos e retorna a imagem resultante. os dois programa estão listados abaixo. </p>
 
 ```
 def esteganografia_msb(img):
@@ -380,5 +361,29 @@ def esteganografia_lsb(img):
 
 ```
 
+```
+import os
+import cv2
+from codigos_py import app
+
+arq_path = "README_FILES/Imagens_geral"
+pasta_saida = "README_FILES/Imagens_processadas"
+
+if not os.path.exists(pasta_saida):
+    os.makedirs(pasta_saida)
+
+img = app.load_image(f"README_FILES/Imagens_geral/desafio-esteganografia.png", "COLOR")
+
+img_msb = app.esteganografia_msb(img)
+img_lsb = app.esteganografia_lsb(img)
+
+cv2.imwrite(f"{pasta_saida}/esteganografia_msb.png", img_msb)
+cv2.imwrite(f"{pasta_saida}/esteganografia_lsb.png", img_lsb)
+
+```
+
 <p align = "CENTER">Figura 08 </br> <img src="/README_FILES/Imagens_processadas/esteganografia_lsb.png"></p>
 <p align = "CENTER">Figura 09 </br> <img src="/README_FILES/Imagens_processadas/esteganografia_msb.png"></p>
+
+
+
