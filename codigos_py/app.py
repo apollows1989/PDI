@@ -57,6 +57,38 @@ def binary_image(image):
 
     return img
 
+def binary_color_image(image):
+    # Verifica se o arquivo foi lido
+    if image is not None:
+        print(f"Arquivo encontrado")
+    else:
+        print(f"Arquivo nao encontrado")
+        return
+
+    img = image.copy()
+    # Coleta as dimens�es das imagens
+    y = img.shape[0]
+    x = img.shape[1]
+
+    for i in range(0, x):
+        for j in range(0, y):
+            if img[j, i][0] >= 128:
+                img[j, i][0] = 255
+            else:
+                img[j, i][0] = 0
+
+            if img[j, i][1] >= 128:
+                img[j, i][1] = 255
+            else:
+                img[j, i][1] = 0
+            
+            if img[j, i][2] >= 128:
+                img[j, i][2] = 255
+            else:
+                img[j, i][2] = 0
+
+    return img
+
 
 # Retira as bolhas que tocam as bordas
 def retira_obj_bordas(image):

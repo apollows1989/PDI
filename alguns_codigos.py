@@ -1,5 +1,7 @@
-# Carregando todas as imagens para serem processadas
+
 import os
+from codigos_py import app
+import cv2
 
 lista_arq = os.listdir("README_FILES/Imagens_geral")
 
@@ -17,7 +19,7 @@ for arq in lista_arq:
     )
 
     cv2.imwrite(f"{pasta_saida}/{arq}", imagem_processada)
-    obj += 1
+    #obj += 1
 
 # img_neg = app.regions_color(img, (20, 20), (300, 300))
 # img_trocado = troca_reg.troca_diagonal(img)
