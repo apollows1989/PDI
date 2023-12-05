@@ -1,4 +1,6 @@
 # Carregando todas as imagens para serem processadas
+import os
+
 lista_arq = os.listdir("README_FILES/Imagens_geral")
 
 pasta_saida = "README_FILES/Imagens_processadas"
