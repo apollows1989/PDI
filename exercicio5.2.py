@@ -8,7 +8,7 @@ pasta_saida = "README_FILES/Imagens_processadas"
 if not os.path.exists(pasta_saida):
     os.makedirs(pasta_saida)
 
-img = app.load_image(f"README_FILES/Imagens_geral/bolhas.png", "COLOR")
+img = app.load_image(f"README_FILES/Imagens_geral/bolhas.png", "GRAY_SCALE")
 
 img_proc = app.binary_image(img)
 img_proc = app.retira_obj_bordas(img)
